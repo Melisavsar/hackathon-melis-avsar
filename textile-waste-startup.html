@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoThread — Sürdürülebilir Lüks Tekstil Çözümleri</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --dark-gold: #b8941f;
+            --cream: #faf8f3;
+            --charcoal: #2c2c2c;
+            --off-black: #1a1a1a;
+            --sage: #8b9d83;
+            --light-sage: #c8d5c1;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--charcoal);
+            overflow-x: hidden;
+            background: var(--cream);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 248, 243, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1.8rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 1.2rem 8%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--off-black);
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 0;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 10rem 8% 6rem;
+            background: linear-gradient(135deg, var(--cream) 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            top: -400px;
+            right: -200px;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 157, 131, 0.08) 0%, transparent 70%);
+            bottom: -300px;
+            left: -150px;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            z-index: 1;
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            color: var(--off-black);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .accent {
+            font-weight: 600;
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2.5rem 0;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.9;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 1.2rem 3rem;
+            font-size: 0.9rem;
+            background: var(--gold);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-gold);
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+        }
+
+        .cta-secondary::before {
+            background: var(--charcoal);
+        }
+
+        .cta-secondary:hover {
+            color: white;
+        }
+
+        .section {
+            padding: 8rem 8%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 6rem;
+        }
+
+        .section-eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: var(--off-black);
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem auto;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 4rem 3rem;
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, rgba(139, 157, 131, 0.03) 100%);
+            transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover::before {
+            left: 0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+            border-color: var(--gold);
+        }
+
+        .feature-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: rgba(212, 175, 55, 0.15);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            transition: all 0.5s ease;
+        }
+
+        .feature-card:hover .feature-number {
+            color: rgba(212, 175, 55, 0.3);
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--off-black);
+            font-weight: 400;
+            position: relative;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .values-section {
+            background: var(--off-black);
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .value-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .value-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .value-item:hover .value-icon {
+            background: rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .value-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 400;
+        }
+
+        .value-item p {
+            color: #ccc;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            padding: 6rem 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+            border-radius: 50%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            padding: 4rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            color: rgba(212, 175, 55, 0.1);
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            border-color: var(--gold);
+        }
+
+        .testimonial-text {
+            color: #555;
+            line-height: 1.9;
+            font-size: 1.05rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 600;
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--off-black);
+            font-weight: 500;
+        }
+
+        .author-info p {
+            color: #888;
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-section {
+            background: var(--cream);
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--off-black);
+            font-weight: 300;
+        }
+
+        .contact-divider {
+            width: 80px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem 0;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .contact-item-text h4 {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .contact-item-text p {
+            color: var(--charcoal);
+            font-size: 1rem;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 4rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            background: transparent;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-weight: 300;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-bottom-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        footer {
+            background: var(--off-black);
+            color: white;
+            padding: 6rem 8% 3rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .footer-section p {
+            color: #ccc;
+            line-height: 1.9;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .social-icon:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 1200px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid,
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .features,
+            .testimonial-grid,
+            .contact-container,
+            .stats-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                padding-bottom: 2rem;
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            z-index: 10000;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <span class="logo-icon">✦</span>
+            <div class="logo">ECOTHREAD</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Anasayfa</a></li>
+            <li><a href="#features">Hizmetler</a></li>
+            <li><a href="#values">Değerlerimiz</a></li>
+            <li><a href="#testimonials">Referanslar</a></li>
+            <li><a href="#contact" class="nav-cta">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Sürdürülebilir Lüks</div>
+            <h1>Tekstil Atıklarını <span class="accent">Sanat Eserine</span> Dönüştürüyoruz</h1>
+            <div class="hero-divider"></div>
+            <p>Prestijli markalar için özel olarak tasarlanmış, çevreye duyarlı tekstil geri dönüşüm çözümleri sunuyoruz. Her lif, sürdürülebilir lüksün yeni tanımıdır.</p>
+            <div class="hero-buttons">
+                <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    Keşfedin
+                </button>
+                <button class="cta-button cta-secondary" onclick="document.getElementById('values').scrollIntoView({behavior: 'smooth'})">
+                    Değerlerimiz
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="section-header">
+            <div class="section-eyebrow">Mükemmellik</div>
+            <h2 class="section-title">Özel Hizmetlerimiz</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Sektörün en seçkin markalarına özel, yüksek kaliteli ve sürdürülebilir tekstil çözümleri sunuyoruz.</p>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <h3>İleri Teknoloji</h3>
+                <p>Yapay zeka destekli sistemlerimiz ile tekstil atıklarını en ince detayına kadar analiz ediyor ve en uygun geri dönüşüm yöntemini belirliyoruz.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <h3>Premium Kalite</h3>
+                <p>Lüks segmentteki markaların kalite standartlarını karşılayan, yüksek performanslı geri dönüştürülmüş tekstiller üretiyoruz.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <h3>Tam İzlenebilirlik</h3>
+                <p>Blockchain teknolojisiyle her tekstil parçasının yolculuğunu şeffaf bir şekilde izleyebilir, sürdürülebilirlik raporlarınızı kolayca oluşturabilirsiniz.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">04</div>
+                <h3>Sıfır Atık Felsefesi</h3>
+                <p>Kimyasal kullanımını minimize eden, enerji verimliliği sağlayan proseslerimizle çevresel etkiyi en aza indiriyoruz.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">05</div>
+                <h3>Özel Koleksiyonlar</h3>
+                <p>Markanızın DNA'sına uygun, özel tasarım geri dönüştürülmüş tekstil koleksiyonları geliştiriyoruz.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">06</div>
+                <h3>Danışmanlık</h3>
+                <p>Sürdürülebilirlik stratejinizi oluşturmanıza ve döngüsel ekonomiye geçişinizi yönetmenize yardımcı oluyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="values" class="section values-section">
+        <div class="section-header">
+            <div class="section-eyebrow" style="color: var(--gold);">Vizyonumuz</div>
+            <h2 class="section-title" style="color: white;">Değerlerimiz</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle" style="color: #ccc;">Sürdürülebilir lüksü yeniden tanımlayan temel ilkelerimiz</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">♦</div>
+                <h3>Mükemmellik</h3>
+                <p>Her aşamada en yüksek kalite standartlarını koruyarak, lüks markaların beklentilerini aşan çözümler sunuyoruz.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">✦</div>
+                <h3>İnovasyon</h3>
+                <p>Sürekli araştırma ve geliştirme ile tekstil geri dönüşümünde sınırları zorlayarak sektöre öncülük ediyoruz.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">◆</div>
+                <h3>Dürüstlük</h3>
+                <p>Şeffaf süreçlerimiz ve tam izlenebilirlik ile ortaklarımıza güven veriyoruz.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">✧</div>
+                <h3>Sorumluluk</h3>
+                <p>Çevreye ve topluma karşı sorumluluğumuzu her kararımızda ön planda tutuyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: white;">
+        <div class="section-header">
+            <div class="section-eyebrow">Süreç</div>
+            <h2 class="section-title">Nasıl Çalışıyoruz</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Tekstil atıklarınızı değerli ürünlere dönüştüren titiz sürecimiz</p>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <h3>Koleksiyon & Analiz</h3>
+                <p>Üretim tesislerinizden veya mağazalarınızdan tekstil atıklarınızı özel lojistik ağımızla topluyoruz. Her parça detaylı bir ön analiz sürecinden geçer ve içerik, kalite ve potansiyel kullanım alanları belirlenir.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <h3>AI Destekli Sınıflandırma</h3>
+                <p>İleri görüntü işleme teknolojimiz tekstilleri kumaş tipi, renk paletleri, lif yapısı ve kalite seviyelerine göre hassas bir şekilde kategorize eder. Bu süreç, maksimum verimlilik ve kalite kontrolü sağlar.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <h3>Özel İşleme Teknikleri</h3>
+                <p>Her tekstil grubuna özel geliştirilmiş geri dönüşüm yöntemleri uyguluyoruz. Mekanik, kimyasal veya termal proseslerden en uygununu seçerek, orijinal kumaşın kalitesine yakın sonuçlar elde ediyoruz.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">04</div>
+                <h3>Kalite Kontrol</h3>
+                <p>Geri dönüştürülmüş her tekstil ürünü, lüks segmentin katı standartlarına uygunluk açısından çok aşamalı kalite testlerinden geçer. Dayanıklılık, renk tutarlılığı ve doku mükemmelliği titizlikle kontrol edilir.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">05</div>
+                <h3>Tasarım & Üretim</h3>
+                <p>Geri dönüştürülmüş tekstillerden markanızın kimliğine uygun yeni iplikler, kumaşlar ve özel koleksiyonlar üretiyoruz. Her parça, sürdürülebilir lüksün bir manifestosudur.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">06</div>
+                <h3>Sertifikasyon & Teslim</h3>
+                <p>Blockchain tabanlı sistemimizle her ürünün karbon ayak izi, su tasarrufu ve geri dönüşüm oranı belgelenir. Detaylı raporlama ile markanızın sürdürülebilirlik hedeflerine ulaşmasını destekleriz.</p>
+            </div>
+            
